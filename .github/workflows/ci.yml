@@ -1,4 +1,4 @@
-name: CI Workflow
+name: Node CI Workflow
 
 on: push
 
@@ -7,5 +7,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print message
-        run: echo "Building project..."
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Verify Node.js version
+        run: node -v
